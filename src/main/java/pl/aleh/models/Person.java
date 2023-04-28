@@ -4,10 +4,21 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "Person")
 public class Person {
 
+  @Id
+  @Column(name = "id")
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
   @NotEmpty(message = "Name must not be empty")
@@ -20,7 +31,8 @@ public class Person {
   @OneToMany(mappedBy = "owner")
   private List<Book> books;
 
-  public Person() {}
+  public Person() {
+  }
 
   public Person(String fullName, int yearOfBirth) {
     this.fullName = fullName;
