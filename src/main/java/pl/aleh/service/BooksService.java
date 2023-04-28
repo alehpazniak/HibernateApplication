@@ -12,9 +12,6 @@ import pl.aleh.models.Book;
 import pl.aleh.models.Person;
 import pl.aleh.repositories.BooksRepository;
 
-/**
- * @author Neil Alishev
- */
 @Service
 @Transactional(readOnly = true)
 public class BooksService {
